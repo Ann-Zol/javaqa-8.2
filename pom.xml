@@ -46,13 +46,6 @@
                         </goals>
                     </execution>
                     <execution>
-                        <id>checking</id>
-                        <phase>verify</phase>
-                        <goals>
-                            <goal>check</goal>
-                        </goals>
-                    </execution>
-                    <execution>
                         <id>report</id>
                         <phase>verify</phase>
                         <goals>
