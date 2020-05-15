@@ -70,14 +70,18 @@ public class Radio {
         if (this.currentStation >= maxStation){
             this.currentStation = minStation;
         }
-        this.currentStation ++;
+        else{
+            this.currentStation ++;
+        }
     }
 
     public void prevStation(){
         if (currentStation <= minStation){
             this.currentStation = maxStation;
         }
-        this.currentStation --;
+        else{
+            this.currentStation --;
+        }
     }
 
     public void increaseVolume(){
