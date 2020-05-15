@@ -67,28 +67,28 @@ public class Radio {
     }
 
     public void nextStation(){
-        if (this.currentStation == maxStation){
+        if (this.currentStation >= maxStation){
             this.currentStation = minStation;
         }
         this.currentStation ++;
     }
 
     public void prevStation(){
-        if (currentStation == minStation){
+        if (currentStation <= minStation){
             this.currentStation = maxStation;
         }
         this.currentStation --;
     }
 
     public void increaseVolume(){
-        if (currentVolume == maxVolume)
+        if (currentVolume >= maxVolume)
             return;
         
         currentVolume ++;
     }
 
     public void decreaseVolume(){
-        if(currentVolume == minVolume)
+        if(currentVolume <= minVolume)
             return;
 
         currentVolume --;
