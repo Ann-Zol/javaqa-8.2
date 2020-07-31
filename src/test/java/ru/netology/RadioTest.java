@@ -11,7 +11,7 @@ class RadioTest {
     @CsvSource(
             value = {
                     "'stationBetweenMaxAndMin', 2, 2",
-                    "'stationEqualMax', 9, 9",
+                    "'stationEqualMax', 10, 10",
                     "'stationEqualMin', 0, 0",
                     "'stationOverMax', 100, 0",
                     "'stationLessMin', -100, 0"
@@ -26,10 +26,26 @@ class RadioTest {
     @ParameterizedTest
     @CsvSource(
             value = {
+                    "'stationBetweenMaxAndMin', 2, 2, 30",
+                    "'stationEqualMax', 30, 30, 30",
+                    "'stationEqualMin', 0, 0, 30",
+                    "'stationOverMax', 100, 0, 30",
+                    "'stationLessMin', -100, 0, 30"
+            }
+    )
+    void shouldSetCurrentStationWithOneArgConstructor(String test, int currentStation, int countStation, int expected) {
+        Radio tempRadio = new Radio(countStation);
+        tempRadio.setCurrentStation(currentStation);
+        assertEquals(tempRadio.getCurrentStation(), expected);
+    }
+
+    @ParameterizedTest
+    @CsvSource(
+            value = {
                     "'volumeBetweenMaxAndMin', 5, 5",
-                    "'volumeEqualMax', 10, 10",
+                    "'volumeEqualMax', 100, 100",
                     "'volumeEqualMin', 0, 0",
-                    "'volumeOverMax', 100, 0",
+                    "'volumeOverMax', 1000, 0",
                     "'volumeLessMin', -100, 0"
             }
     )
@@ -43,7 +59,7 @@ class RadioTest {
     @CsvSource(
             value = {
                     "'nextStationBetweenMaxAndMin', 2, 3",
-                    "'nextStationEqualMax', 9, 0"
+                    "'nextStationEqualMax', 10, 0"
             }
     )
     void shouldNextStation(String test, int currentStation, int expected) {
@@ -57,7 +73,7 @@ class RadioTest {
     @CsvSource(
             value = {
                     "'prevStationBetweenMaxAndMin', 4, 3",
-                    "'prevStationLessMin', 0, 9"
+                    "'prevStationLessMin', 0, 10"
             }
     )
     void shouldPrevStation(String test, int currentStation, int expected) {
@@ -71,8 +87,8 @@ class RadioTest {
     @CsvSource(
             value = {
                     "'increaseVolumeBetweenMaxAndMin', 4, 5",
-                    "'increaseVolumeEqualMax', 9, 10",
-                    "'increaseVolumeOverMax', 10, 10"
+                    "'increaseVolumeEqualMax', 99, 100",
+                    "'increaseVolumeOverMax', 1000, 100"
             }
     )
     void shouldIncreaseVolume(String test, int currentVolume, int expected) {
