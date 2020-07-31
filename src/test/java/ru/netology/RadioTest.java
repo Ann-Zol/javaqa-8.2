@@ -80,7 +80,7 @@ class RadioTest {
             value = {
                     "'increaseVolumeBetweenMaxAndMin', 4, 5",
                     "'increaseVolumeEqualMax', 99, 100",
-                    "'increaseVolumeOverMax', 1000, 0"
+                    "'increaseVolumeOverMax', 100, 100"
             }
     )
     void shouldIncreaseVolume(String test, int currentVolume, int expected) {
