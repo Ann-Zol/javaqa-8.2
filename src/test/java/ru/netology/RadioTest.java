@@ -1,6 +1,5 @@
 package ru.netology;
 
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -24,11 +23,16 @@ class RadioTest {
         assertEquals(tempRadio.getCurrentStation(), expected);
     }
 
-    @Test
-    void shouldCreateRadioWithChooseCountStation(int countStation) {
+    @ParameterizedTest
+    @CsvSource(
+            value = {
+                    "'ChooseStation', 30, 30"
+            }
+    )
+    void shouldCreateRadioWithChooseCountStation(String test, int countStation, int expected) {
         Radio tempRadio = new Radio(countStation);
 
-        assertEquals(tempRadio.getMaxStation(), countStation);
+        assertEquals(tempRadio.getMaxStation(), expected);
     }
 
     @ParameterizedTest
