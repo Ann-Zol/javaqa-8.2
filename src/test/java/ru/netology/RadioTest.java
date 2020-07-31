@@ -1,5 +1,6 @@
 package ru.netology;
 
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
@@ -23,20 +24,11 @@ class RadioTest {
         assertEquals(tempRadio.getCurrentStation(), expected);
     }
 
-    @ParameterizedTest
-    @CsvSource(
-            value = {
-                    "'stationBetweenMaxAndMin', 2, 2, 30",
-                    "'stationEqualMax', 30, 30, 30",
-                    "'stationEqualMin', 0, 0, 30",
-                    "'stationOverMax', 100, 0, 30",
-                    "'stationLessMin', -100, 0, 30"
-            }
-    )
-    void shouldSetCurrentStationWithOneArgConstructor(String test, int currentStation, int countStation, int expected) {
+    @Test
+    void shouldCreateRadioWithChooseCountStation(int countStation) {
         Radio tempRadio = new Radio(countStation);
-        tempRadio.setCurrentStation(currentStation);
-        assertEquals(tempRadio.getCurrentStation(), expected);
+
+        assertEquals(tempRadio.getMaxStation(), countStation);
     }
 
     @ParameterizedTest
@@ -88,7 +80,7 @@ class RadioTest {
             value = {
                     "'increaseVolumeBetweenMaxAndMin', 4, 5",
                     "'increaseVolumeEqualMax', 99, 100",
-                    "'increaseVolumeOverMax', 1000, 100"
+                    "'increaseVolumeOverMax', 1000, 0"
             }
     )
     void shouldIncreaseVolume(String test, int currentVolume, int expected) {
